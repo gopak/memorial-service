@@ -6,9 +6,9 @@ import { getConsultantsList } from "../../services/consultant/Consultant.service
 import ConsultantGrid from "../../components/consultant-grid/ConsultantGrid";
 import { Consultant } from "../../services/consultant/Consultant.model";
 
-interface CatalogConsultantsProps {}
+interface ConsultantsCatalogProps {}
 
-const CatalogConsultants: React.FC<CatalogConsultantsProps> = (props) => {
+const ConsultantsCatalog: React.FC<ConsultantsCatalogProps> = (props) => {
   const dispatch = useAppDispatch();
   const [consultantsList, setConsultantsList] = useState<Consultant[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +29,7 @@ const CatalogConsultants: React.FC<CatalogConsultantsProps> = (props) => {
   };
 
   return (
-    <div className="catalog-consultants">
+    <div className="consultants-catalog">
       <div className="wrapper">
         <h2 className="mb-3">Каталог консультантів</h2>
         <ConsultantGrid consultantsList={consultantsList} loading={loading} />
@@ -38,4 +38,4 @@ const CatalogConsultants: React.FC<CatalogConsultantsProps> = (props) => {
   );
 };
 
-export default CatalogConsultants;
+export default ConsultantsCatalog;

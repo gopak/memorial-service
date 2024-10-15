@@ -1,27 +1,35 @@
 import React from "react";
-import "./PersonCard.scss";
+import "./AvatarView.scss";
 
-interface PersonCardProps {
-  photoPath: string;
-  name: string;
-  phone: string;
+interface AvatarViewProps {
+  src: string | undefined;
 }
 
-const PersonCard: React.FC<PersonCardProps> = ({ photoPath, name, phone }) => {
+const AvatarView: React.FC<AvatarViewProps> = ({ src }) => {
   return (
-    <div className={"person-card"}>
-      <div className={"person-card__photo"}>
-        <img
-          src={photoPath ? photoPath : "https://placehold.co/80x80"}
-          alt={name}
-        />
+    <div className="avatar-view">
+      <div className="avatar-view__item lg">
+        <div className="avatar-view__item__img">
+          <img src={src} alt="" />
+        </div>
       </div>
-      <div className={"person-card__info"}>
-        <p className={"person-card__name"}>{name}</p>
-        <span className={"person-card__phone"}>{phone}</span>
+      <div className="avatar-view__item md">
+        <div className="avatar-view__item__img">
+          <img src={src} alt="" />
+        </div>
+      </div>
+      <div className="avatar-view__item sm">
+        <div className="avatar-view__item__img">
+          <img src={src} alt="" />
+        </div>
+      </div>
+      <div className="avatar-view__item xsm">
+        <div className="avatar-view__item__img">
+          <img src={src} alt="" />
+        </div>
       </div>
     </div>
   );
 };
 
-export default PersonCard;
+export default AvatarView;

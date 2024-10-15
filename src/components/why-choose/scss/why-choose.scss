@@ -1,0 +1,23 @@
+.why-choose {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -15px;
+
+  &__item {
+    width: calc(33.3333% - 30px);
+    margin: 0 15px 15px;
+  }
+
+  &__number {
+    margin-bottom: 15px;
+    opacity: 0.59;
+    font-family: DemiBold;
+    font-size: 36px;
+    color: #041248;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    font-family: Bold;
+  }
+}

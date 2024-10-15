@@ -1,4 +1,4 @@
-export const AREAS: any[] = [
+export const AreasConstant: any[] = [
   {
     id: "2121",
     parent_id: "5",
@@ -260,7 +260,6 @@ export const AREAS: any[] = [
       { id: "3463", parent_id: "2160", name: "яремче", areas: [] },
     ],
   },
-  { id: "115", parent_id: "5", name: "киев", areas: [] },
   {
     id: "2164",
     parent_id: "5",
@@ -287,6 +286,7 @@ export const AREAS: any[] = [
       { id: "3091", parent_id: "2164", name: "иванков", areas: [] },
       { id: "3092", parent_id: "2164", name: "ирпень", areas: [] },
       { id: "2676", parent_id: "2164", name: "кагарлык", areas: [] },
+      { id: "115", parent_id: "2164", name: "киев", areas: [] },
       {
         id: "3093",
         parent_id: "2164",

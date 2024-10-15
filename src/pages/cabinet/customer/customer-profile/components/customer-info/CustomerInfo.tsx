@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 import "./CustomerInfo.scss";
 
 import { useSelector } from "react-redux";
-import { selectCustomerState } from "../../../../../store/selectors/Customer.selectors";
 import EditCustomerInfoModal, {
   EditCustomerInfoModalRef,
 } from "./components/edit-customer-info-modal/EditCustomerInfoModal";
-import { convertTimestampToString } from "../../../../../utils/Helpers.util";
-import InfoView from "../../../../../components/info-view/InfoView";
+import { selectCustomerState } from "../../../../../../store/selectors/Customer.selectors";
+import InfoView from "../../../../../../components/info-view/InfoView";
+import { convertTimestampToString } from "../../../../../../utils/Helpers.util";
 
 interface CustomerInfoProps {}
 

@@ -1,42 +1,44 @@
-import * as types from "../actions/Auth.action";
-import { AuthModel } from "../../services/auth/Auth.model";
+import * as types from "../actions/Customer.action";
+import { Customer } from "../../services/customer/Customer.model";
+import { RequestError } from "../../app.types";
+import { clearCustomerSate } from "../actions/Customer.action";
 
-export interface AuthState extends AuthModel {
-    loading: boolean;
+export interface CustomerState {
+  profile: Customer | null;
+  profileLoading: boolean;
+  error: RequestError | null;
 }
 
-const initialState: AuthState = {
-    uid: "",
-    email: "",
-    accessToken: "",
-    expirationTime: 0,
-    refreshToken: "",
-    loading: false,
+const initialState: CustomerState = {
+  profile: null,
+  profileLoading: false,
+  error: null,
 };
 
-export const authReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case types.LOGIN_ATTEMPT:
-            return {
-                ...state,
-                loading: true,
-            };
-        case types.LOGIN_SUCCESS:
-            return {
-                ...state,
-                uid: action.payload?.uid,
-                email: action.payload?.email,
-                accessToken: action.payload?.accessToken,
-                expirationTime: action.payload?.expirationTime,
-                refreshToken: action.payload?.refreshToken,
-                loading: false,
-            };
-        case types.LOGIN_ERROR:
-            return {
-                ...state,
-                loading: false,
-            };
-        default:
-            return state;
-    }
+export const customerReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case types.GET_CUSTOMER_PROFILE_ATTEMPT:
+      return {
+        ...state,
+        profileLoading: true,
+      };
+    case types.GET_CUSTOMER_PROFILE_SUCCESS:
+      return {
+        ...state,
+        profile: action.payload,
+        profileLoading: false,
+      };
+    case types.GET_CUSTOMER_PROFILE_ERROR:
+      return {
+        ...state,
+        error: action.error,
+        profileLoading: false,
+      };
+    case types.CLEAR_CUSTOMER_STATE:
+      return {
+        ...initialState,
+      };
+    default:
+      return state;
+  }
 };

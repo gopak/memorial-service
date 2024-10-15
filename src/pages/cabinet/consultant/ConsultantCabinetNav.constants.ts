@@ -1,4 +1,4 @@
-import { CabinetNavItem } from "../../app.types";
+import { CabinetNavItem } from "../../../app.types";
 
 export const CONSULTANT_CABINET_NAV: CabinetNavItem[] = [
   {
@@ -22,7 +22,7 @@ export const CONSULTANT_CABINET_NAV: CabinetNavItem[] = [
     icon: "wallet",
   },
   {
-    path: "/",
+    path: "/consultant/clients",
     title: "Мої клієнти",
     icon: "account",
   },

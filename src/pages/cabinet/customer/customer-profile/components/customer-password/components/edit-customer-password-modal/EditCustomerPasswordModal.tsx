@@ -7,27 +7,27 @@ import React, {
 } from "react";
 import "./EditCustomerPasswordModal.scss";
 
-import Modal, { ModalRef } from "../../../../../../../components/modal/Modal";
-import { useForm } from "react-hook-form";
-import { Customer } from "../../../../../../../services/customer/Customer.model";
-import {
-  MAX_LENGTH,
-  MIN_LENGTH,
-} from "../../../../../../../modules/forms/validators/Validator";
-import Input from "../../../../../../../modules/forms/controls/Input";
-import Loader from "../../../../../../../components/loader/Loader";
-
-import {
-  auth,
-  paresFirebaseErrors,
-} from "../../../../../../../firebase/Firebase.service";
-
 import {
   updatePassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
 } from "firebase/auth";
-import { alertMessage } from "../../../../../../../components/alert-message/AlertMessage";
+import { Customer } from "../../../../../../../../services/customer/Customer.model";
+import Modal, {
+  ModalRef,
+} from "../../../../../../../../components/modal/Modal";
+import { useForm } from "react-hook-form";
+import { alertMessage } from "../../../../../../../../components/alert-message/AlertMessage";
+import {
+  auth,
+  paresFirebaseErrors,
+} from "../../../../../../../../firebase/Firebase.service";
+import Input from "../../../../../../../../modules/forms/controls/Input";
+import {
+  MAX_LENGTH,
+  MIN_LENGTH,
+} from "../../../../../../../../modules/forms/validators/Validator";
+import Loader from "../../../../../../../../components/loader/Loader";
 
 interface EditCustomerPasswordModalProps {}
 

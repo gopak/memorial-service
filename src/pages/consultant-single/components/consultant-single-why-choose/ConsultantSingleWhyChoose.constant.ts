@@ -1,4 +1,4 @@
-import { WhyChooseList } from "../../../components/why-choose/WhyChoose";
+import { WhyChooseList } from "../../../../components/why-choose/WhyChoose";
 
 export const CONSULTANT_SINGLE_WHY_CHOOSE: WhyChooseList[] = [
   {

@@ -1,4 +1,4 @@
-import { CabinetNavItem } from "../../app.types";
+import { CabinetNavItem } from "../../../app.types";
 
 export const CUSTOMER_CABINET_NAV: CabinetNavItem[] = [
   {

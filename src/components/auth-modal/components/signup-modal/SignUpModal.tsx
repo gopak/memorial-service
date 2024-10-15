@@ -13,11 +13,11 @@ import { useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import ConsultantSignUpForm from "./components/consultant-signup-form/ConsultantSignUpForm";
-import { useAppDispatch } from "../../store/store";
-import { selectAuthState } from "../../store/selectors/Auth.selectors";
-import Modal, { ModalRef } from "../modal/Modal";
-import { UserType } from "../../app.types";
-import { clearLoginError } from "../../store/actions/Auth.action";
+import { useAppDispatch } from "../../../../store/store";
+import { selectAuthState } from "../../../../store/selectors/Auth.selectors";
+import Modal, { ModalRef } from "../../../modal/Modal";
+import { UserType } from "../../../../app.types";
+import { clearLoginError } from "../../../../store/actions/Auth.action";
 
 interface SignUpModalProps {
   onClickFooterLink: () => void;

@@ -1,16 +1,7 @@
-.label-control {
+.form-label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  padding-left: 15px;
   font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-
-  &-required {
-    &:after {
-      content: ' *';
-      vertical-align: top;
-      color: #a94442;
-      line-height: 1;
-    }
-  }
+  line-height: 20px;
 }

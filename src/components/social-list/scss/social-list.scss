@@ -1,7 +1,13 @@
-.footer-social {
+.social-list {
   display: flex;
+  list-style: none;
 
   &__item {
+    width: 32px;
+    height: 32px;
 
+    & + & {
+      margin-left: 10px;
+    }
   }
 }

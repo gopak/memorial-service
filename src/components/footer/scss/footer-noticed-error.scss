@@ -1,4 +1,14 @@
-.noticed-error {
-  padding: 50px 0;
-  background-color: #fff;
+.footer-noticed-error {
+  background-color: #FAFBFF;
+
+  &__body {
+    padding: 50px 0;
+    background-image: url('#{$images-path-img}/footer-bg-right.png');
+    background-repeat: repeat-y;
+    background-position: 100% 0;
+  }
+
+  &__action {
+    max-width: 50%;
+  }
 }

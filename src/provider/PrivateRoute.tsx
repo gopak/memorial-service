@@ -1,20 +1,39 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import PropTypes from "prop-types";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
+import { logOut } from "../services/auth/Auth.service";
+import { useAppDispatch } from "../store/store";
+import { alertMessage } from "../components/alert-message/AlertMessage";
 
 const PrivateRoute = ({ children }) => {
-  const { loading, user } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+  const location = useLocation();
+  const dispatch = useAppDispatch();
 
-  if (loading) {
-    return <span className="loading loading-dots loading-lg"></span>;
+  if (authContext?.loading) {
+    return <span className="profileLoading-root"></span>;
   }
 
-  if (user) {
-    return children;
+  if (!authContext?.authProviderState) {
+    return <Navigate to="/" replace />;
   }
 
-  return <Navigate to="/" replace />;
+  if (
+    authContext?.authProviderState?.userType !== undefined &&
+    !location?.pathname?.startsWith(
+      `/${authContext?.authProviderState?.userType}`,
+    )
+  ) {
+    dispatch(logOut());
+    alertMessage({
+      type: "info",
+      message: "Ваш сеанс закінчився, будь ласка, увійдіть",
+    });
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
 };
 
 export default PrivateRoute;

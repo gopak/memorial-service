@@ -7,27 +7,27 @@ import React, {
 } from "react";
 import "./EditConsultantPasswordModal.scss";
 
-import Modal, { ModalRef } from "../../../../../../../components/modal/Modal";
 import { useForm } from "react-hook-form";
-import {
-  MAX_LENGTH,
-  MIN_LENGTH,
-} from "../../../../../../../modules/forms/validators/Validator";
-import Input from "../../../../../../../modules/forms/controls/Input";
-import Loader from "../../../../../../../components/loader/Loader";
-
+import { Consultant } from "../../../../../../../../services/consultant/Consultant.model";
+import Modal, {
+  ModalRef,
+} from "../../../../../../../../components/modal/Modal";
 import {
   auth,
   paresFirebaseErrors,
-} from "../../../../../../../firebase/Firebase.service";
-
+} from "../../../../../../../../firebase/Firebase.service";
 import {
-  updatePassword,
-  reauthenticateWithCredential,
   EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword,
 } from "firebase/auth";
-import { alertMessage } from "../../../../../../../components/alert-message/AlertMessage";
-import { Consultant } from "../../../../../../../services/consultant/Consultant.model";
+import { alertMessage } from "../../../../../../../../components/alert-message/AlertMessage";
+import Input from "../../../../../../../../modules/forms/controls/Input";
+import {
+  MAX_LENGTH,
+  MIN_LENGTH,
+} from "../../../../../../../../modules/forms/validators/Validator";
+import Loader from "../../../../../../../../components/loader/Loader";
 
 interface EditConsultantPasswordModalProps {}
 

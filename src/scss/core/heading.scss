@@ -1,114 +1,28 @@
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 10px;
-  line-height: 1.2;
-  color: #12477a;
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+  font-family: DemiBold;
 }
 
 h1, .h1 {
-  margin-bottom: 25px;
-  font-size: 28px;
-
-  @include max-screen(nth($res-collection, 4)*1px) {
-    font-size: 20px;
-  }
+  font-size: 56px;
+  line-height: 68px;
 }
-h2, .h2 { font-size: 24px; }
-h3, .h3 { font-size: 18px; }
-h4, .h4 { font-size: 14px; }
-h5, .h5 { font-size: 12px; }
-h6, .h6 { font-size: 10px; }
-
-.h1-section {
-  margin-bottom: 25px;
-  font-size: 28px;
-
-  &__name {
-    color: #59d8fd;
-  }
-
-  @include max-screen(nth($res-collection, 4)*1px) {
-    margin-bottom: 20px;
-    font-size: 20px;
-  }
-}
-
-.h2-section {
-  display: inline-block;
-  margin-bottom: 20px;
+h2, .h2 {
   font-size: 36px;
-  color: #12477a;
-  font-weight: 600;
-  line-height: 1.4;
-
-  &__name {
-    color: #59d8fd;
-  }
-
-  @include max-screen(nth($res-collection, 4)*1px) {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
+  line-height: 44px;
 }
-
-.h3-section  {
+h3, .h3 {
   margin-bottom: 10px;
-  font-size: 30px;
-  color: #12477a;
-  font-weight: 600;
-
-  &__name {
-    color: #59d8fd;
-  }
-
-  @include max-screen(nth($res-collection, 4)*1px) {
-    font-size: 24px;
-  }
-
-  &__order-info {
-    @include max-screen(nth($res-collection, 6)*1px) {
-      font-size: 21px;
-    }
-    @include max-screen(nth($res-collection, 7)*1px) {
-      font-size: 19px;
-    }
-    @include max-screen(nth($res-collection, 9)*1px) {
-      font-size: 15px;
-    }
-  }
+  font-size: 28px;
+  line-height: 36px;
 }
-
-.h4-section  {
-  margin-bottom: 15px;
-  font-size: 22px;
-  color: #12477a;
-  font-weight: 600;
-
-  @include max-screen(nth($res-collection, 4)*1px) {
-    font-size: 18px;
-  }
-
-  &__name {
-    color: #59d8fd;
-  }
+h4, .h4 {
+  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 30px;
 }
-
-.heading-filters {
-  margin-bottom: 15px;
-
-  @include min-screen(nth($res-collection, 4)*1px) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 35px;
-
-    .h2-section,
-    .h1-section {
-      margin-bottom: 0;
-    }
-
-    &__action {
-      width: 270px;
-    }
-  }
+h5, .h5 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 26px;
 }

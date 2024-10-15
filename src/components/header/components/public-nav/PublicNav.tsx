@@ -1,25 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "./Header.scss"
-import { Icon } from "../icons/Icons";
-import Login from "./components/login/Login";
-interface Props {}
+import React from "react";
+import { Link } from "react-router-dom";
+import "./PublicNav.scss";
+import { SITE_MAP } from "../../../../constants/SiteMap.constants";
 
-const Header: React.FC<Props> = props => {
+interface PublicNavProps {}
 
+const PublicNav: React.FC<PublicNavProps> = (props) => {
   return (
-      <header className="header">
-          <div className="wrapper">
-              <div className={"header__in"}>
-                  <Link to="/"
-                        className={"logo"}
-                  ><Icon name={'logo'} width={182} height={38} /></Link>
-                  <Login/>
-              </div>
-
-          </div>
-      </header>
+    <ul className={"public-nav"}>
+      {SITE_MAP.map((item) => (
+        <li key={item.title} className={"public-nav__list"}>
+          <Link to={item.path} className={"public-nav__item"}>
+            <span className={"public-nav__item__link"}>{item.title}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
-}
+};
 
-export default Header;
+export default PublicNav;

@@ -1,15 +1,35 @@
 @font-face {
-  font-family: 'TT Firs Neue';
-  src: local('TT Firs Neue'),
+  font-family: 'Regular';
+  src: local('TT Firs Neue Trial Regular'),
        url('#{$font-path}/TT Firs Neue Trial Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
 }
 
-//styleName: Text/Main - Regular;
-//font-family: TT Firs Neue;
-//font-size: 16px;
-//font-weight: 400;
-//line-height: 24px;
-//text-align: left;
+@font-face {
+  font-family: 'Medium';
+  src: local('TT Firs Neue Trial Medium'),
+  url('#{$font-path}/TT Firs Neue Trial Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'Bold';
+  src: local('TT Firs Neue Trial Bold'),
+  url('#{$font-path}/TT Firs Neue Trial Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'DemiBold';
+  src: local('TT Firs Neue Trial Bold'),
+  url('#{$font-path}/TT Firs Neue Trial DemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}

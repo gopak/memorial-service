@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ConsultantShortProfile from "./components/consultant-short-profile/ConsultantShortProfile";
-import { selectConsultantState } from "../../../store/selectors/Consultant.selectors";
-import ConsultantCustomers from "./components/consultant-customers/ConsultantCustomers";
+import ConsultantClientsView from "./components/consultant-clients-view/ConsultantClientsView";
+import { selectConsultantState } from "../../../../store/selectors/Consultant.selectors";
 
 interface ConsultantMainProps {}
 
@@ -26,9 +26,9 @@ const ConsultantMain: React.FC<ConsultantMainProps> = (props) => {
           <ConsultantShortProfile />
         </div>
       </div>
-      {consultant.profile?.customerIds?.length ? (
+      {consultant.profile?.clientIds?.length ? (
         <div className={"mt-4"}>
-          <ConsultantCustomers />
+          <ConsultantClientsView />
         </div>
       ) : null}
     </>

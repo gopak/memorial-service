@@ -1,37 +1,36 @@
-import React from 'react';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./Header.scss";
 
-interface Props {}
+import PublicNav from "./components/public-nav/PublicNav";
+import HeaderAuth from "./components/header-auth/HeaderAuth";
+import Icon from "../icons/Icons";
+import { useSelector } from "react-redux";
+import { selectAuthState } from "../../store/selectors/Auth.selectors";
 
-export async function loader() {
-  await new Promise((r) => setTimeout(r, 500));
-  return "I came from the About.tsx loader function!";
-}
+interface HeaderProps {}
 
-const About: React.FC<Props> = props => {
+const Header: React.FC<HeaderProps> = (props) => {
+  const auth = useSelector(selectAuthState);
+  const location = useLocation();
+
+  const isPrivateRoute = (): boolean => {
+    return location.pathname.startsWith(`/${auth.userType}`);
+  };
 
   return (
-      <h1>About</h1>
+    <header className={`header ${isPrivateRoute() ? "isPrivateRoute" : ""}`}>
+      <div className="wrapper">
+        <div className={"header__in"}>
+          <Link to="/" className={"logo"}>
+            <Icon name={"logo"} width={182} height={38} />
+          </Link>
+          {auth?.accessToken ? null : <PublicNav />}
+          <HeaderAuth />
+        </div>
+      </div>
+    </header>
   );
-}
+};
 
-export default About;
-
-// import { useLoaderData } from "react-router-dom";
-//
-// export async function loader() {
-//   await new Promise((r) => setTimeout(r, 500));
-//   return "I came from the About.tsx loader function!";
-// }
-//
-// export function Component() {
-//   let data = useLoaderData() as string;
-//
-//   return (
-//       <div>
-//         <h2>About</h2>
-//         <p>{data}</p>
-//       </div>
-//   );
-// }
-//
-// Component.displayName = "AboutPage";
+export default Header;

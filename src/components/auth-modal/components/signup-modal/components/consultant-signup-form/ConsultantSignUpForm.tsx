@@ -3,19 +3,19 @@ import "./ConsultantSignUpForm.scss";
 
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../../../store/store";
-import { selectAuthState } from "../../../../store/selectors/Auth.selectors";
-import { CustomerPayload } from "../../../../services/customer/Customer.model";
-import { createUser } from "../../../../services/auth/Auth.service";
-import Input from "../../../../modules/forms/controls/Input";
+import { useAppDispatch } from "../../../../../../store/store";
+import { selectAuthState } from "../../../../../../store/selectors/Auth.selectors";
+import { CustomerPayload } from "../../../../../../services/customer/Customer.model";
+import { createUser } from "../../../../../../services/auth/Auth.service";
+import Input from "../../../../../../modules/forms/controls/Input";
 import {
   MAX_LENGTH,
   MIN_LENGTH,
   PATTERN,
-} from "../../../../modules/forms/validators/Validator";
-import InputDate from "../../../../modules/forms/controls/InputDate";
-import InputCheckbox from "../../../../modules/forms/controls/InputCheckbox";
-import Loader from "../../../loader/Loader";
+} from "../../../../../../modules/forms/validators/Validator";
+import InputDate from "../../../../../../modules/forms/controls/InputDate";
+import InputCheckbox from "../../../../../../modules/forms/controls/InputCheckbox";
+import Loader from "../../../../../loader/Loader";
 
 interface ConsultantSignUpFormProps {
   onSuccess: () => void;

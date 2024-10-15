@@ -15,11 +15,11 @@ html {
 }
 
 body {
-  background-color: #fefefe;
+  background-color: #F2F5FF;
   font-family: $font-family-base;
   font-size: $font-size-base;
-  color: #717171;
-  line-height: 1.6;
+  color: $color-base;
+  line-height: 24px;
   overflow-x: hidden;
   min-height: 100vh;
 
@@ -28,17 +28,6 @@ body {
   }
 }
 
-ngx-root {
-  display: block;
-  min-height: 100vh;
-}
-
-ngx-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 
 *:focus {
   outline: none;

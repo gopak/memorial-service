@@ -1,5 +1,5 @@
 import { RootState } from "../reducers";
-import { AuthState } from "../reducers/Auth.reducer";
+import { CustomerState } from "../reducers/Customer.reducer";
 
-export const selectAuthState = (state: RootState): AuthState => state.auth;
+export const selectCustomerState = (state: RootState): CustomerState => state.customer;
 

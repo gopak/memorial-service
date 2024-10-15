@@ -1,0 +1,25 @@
+.ReactModal {
+  &__Overlay {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    overflow-y: auto;
+  }
+
+  &__Body {
+    &--open {
+      overflow: hidden;
+    }
+  }
+
+  &__Content {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    padding: 30px;
+    transform: translate(-50%, 0);
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    overflow: auto;
+    outline: none;
+  }
+}

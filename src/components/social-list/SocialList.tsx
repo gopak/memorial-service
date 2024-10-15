@@ -1,10 +1,34 @@
 import React from "react";
-import "./FooterSocial.scss";
+import "./SocialList.scss";
+import Icon from "../icons/Icons";
 
-interface FooterSocialProps {}
+interface SocialListProps {}
 
-const FooterSocial: React.FC<FooterSocialProps> = (props) => {
-  return <div className={"footer-social"}></div>;
+const SocialList: React.FC<SocialListProps> = (props) => {
+  return (
+    <ul className={"social-list"}>
+      <li className={"social-list__item"}>
+        <a href="/">
+          <Icon name={"instagram"} width={32} height={32} />
+        </a>
+      </li>
+      <li className={"social-list__item"}>
+        <a href="/">
+          <Icon name={"facebook"} width={32} height={32} />
+        </a>
+      </li>
+      <li className={"social-list__item"}>
+        <a href="/">
+          <Icon name={"telegram"} width={32} height={32} />
+        </a>
+      </li>
+      <li className={"social-list__item"}>
+        <a href="/">
+          <Icon name={"viber"} width={32} height={32} />
+        </a>
+      </li>
+    </ul>
+  );
 };
 
-export default FooterSocial;
+export default SocialList;

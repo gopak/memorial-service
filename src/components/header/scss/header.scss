@@ -1,0 +1,15 @@
+.header {
+  padding: 20px 0;
+  background-color: #FAFBFF;
+  border-bottom: 1px solid #E6E6E6;
+
+  &.isPrivateRoute {
+    background-color: #fff;
+  }
+
+  &__in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

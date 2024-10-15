@@ -1,19 +1,25 @@
-import { AuthModel } from "../../services/auth/Auth.model";
+import { Customer } from "../../services/customer/Customer.model";
+import { RequestError } from "../../app.types";
 
-export const LOGIN_ATTEMPT = "LOGIN_ATTEMPT";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_ERROR = "LOGIN_ERROR";
+export const GET_CUSTOMER_PROFILE_ATTEMPT = "GET_CUSTOMER_PROFILE_ATTEMPT";
+export const GET_CUSTOMER_PROFILE_SUCCESS = "GET_CUSTOMER_PROFILE_SUCCESS";
+export const GET_CUSTOMER_PROFILE_ERROR = "GET_CUSTOMER_PROFILE_ERROR";
+export const CLEAR_CUSTOMER_STATE = "CLEAR_CUSTOMER_STATE";
 
-
-export const loginAttempt = () => ({
-    type: LOGIN_ATTEMPT,
+export const getCustomerProfileAttempt = () => ({
+  type: GET_CUSTOMER_PROFILE_ATTEMPT,
 });
 
-export const loginSuccess = (payload: AuthModel | null) => ({
-    type: LOGIN_SUCCESS,
-    payload,
+export const getCustomerProfileSuccess = (payload: Customer) => ({
+  type: GET_CUSTOMER_PROFILE_SUCCESS,
+  payload,
 });
-export const loginError = (error) => ({
-    type: LOGIN_SUCCESS,
-    error,
+
+export const getCustomerProfileError = (error: RequestError) => ({
+  type: GET_CUSTOMER_PROFILE_ERROR,
+  error,
+});
+
+export const clearCustomerSate = () => ({
+  type: CLEAR_CUSTOMER_STATE,
 });

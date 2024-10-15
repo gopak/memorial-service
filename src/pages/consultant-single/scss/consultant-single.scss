@@ -1,0 +1,12 @@
+.consultant-single {
+  display: flex;
+
+  &__nav {
+    flex: 0 0 315px;
+    margin-left: 30px;
+  }
+
+  &__content {
+    flex: auto;
+  }
+}

@@ -1,18 +1,26 @@
 import React from "react";
-import "./InfoView.scss";
+import "./PersonCard.scss";
 
-interface InfoViewProps {
-  label: string;
-  value: any;
+interface PersonCardProps {
+  photoPath: string;
+  name: string;
+  phone: string;
 }
 
-const InfoView: React.FC<InfoViewProps> = ({ label, value }) => {
+const PersonCard: React.FC<PersonCardProps> = ({ photoPath, name, phone }) => {
   return (
-    <div className={"info-view"}>
-      <p className={"info-view__label"}>{label}</p>
-      <span className={"info-view__value"}>{value}</span>
+    <div className="person-card">
+      <div className="person-card__photo">
+        <div className="person-card__photo__img">
+          <img src={photoPath} alt={name} />
+        </div>
+      </div>
+      <div className="person-card__info">
+        <p className="person-card__name">{name}</p>
+        <span className="person-card__phone">{phone}</span>
+      </div>
     </div>
   );
 };
 
-export default InfoView;
+export default PersonCard;

@@ -12,11 +12,11 @@ import SignInForm from "./components/signin-form/SignInForm";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PasswordResetForm from "./components/password-reset-form/PasswordResetForm";
-import { useAppDispatch } from "../../store/store";
-import { selectAuthState } from "../../store/selectors/Auth.selectors";
-import Modal, { ModalRef } from "../modal/Modal";
-import { UserType } from "../../app.types";
-import { clearLoginError } from "../../store/actions/Auth.action";
+import { useAppDispatch } from "../../../../store/store";
+import { selectAuthState } from "../../../../store/selectors/Auth.selectors";
+import Modal, { ModalRef } from "../../../modal/Modal";
+import { UserType } from "../../../../app.types";
+import { clearLoginError } from "../../../../store/actions/Auth.action";
 
 interface SignInModalProps {
   onClickFooterLink: () => void;

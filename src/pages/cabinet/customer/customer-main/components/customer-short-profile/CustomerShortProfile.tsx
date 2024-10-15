@@ -2,11 +2,11 @@ import React from "react";
 import "./CustomerShortProfile.scss";
 
 import { useSelector } from "react-redux";
-import { selectCustomerState } from "../../../../../store/selectors/Customer.selectors";
 import { useNavigate } from "react-router-dom";
-import InfoView from "../../../../../components/info-view/InfoView";
-import PersonCard from "../../../../../components/person-card/PersonCard";
-import { getImagePathFromStorage } from "../../../../../firebase/Firebase.service";
+import { selectCustomerState } from "../../../../../../store/selectors/Customer.selectors";
+import PersonCard from "../../../../../../components/person-card/PersonCard";
+import { getImagePathFromStorage } from "../../../../../../firebase/Firebase.service";
+import InfoView from "../../../../../../components/info-view/InfoView";
 
 interface CustomerShortProfileProps {}
 

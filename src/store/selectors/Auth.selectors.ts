@@ -1,15 +1,5 @@
-import { RootState } from '../reducers';
-import { UserState } from '../types/User.type';
+import { RootState } from "../reducers";
+import { AuthState } from "../reducers/Auth.reducer";
 
-export const selectUserState = (state: RootState): UserState => state.user;
-export const selectUserAccessToken = (state: RootState) =>
-  state.user.access_token;
-export const selectUserProfile = (state: RootState) => state.user.profile;
-export const selectUserGarage = (state: RootState) => ({
-  garageCars: state.user.garageCars,
-  garageCarsLoading: state.user.garageCarsLoading,
-  garageCarsError: state.user.garageCarsError,
-});
+export const selectAuthState = (state: RootState): AuthState => state.auth;
 
-export const selectPromoteBiometricsPopup = (state: RootState) =>
-  state.user.promoteBiometricsPopup;

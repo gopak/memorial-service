@@ -1,13 +1,13 @@
-import type { FC } from "react";
+import React from "react";
+import Icon from "../icons/Icons";
+import "./Loader.scss";
 
-import { IconName, svgIconsConfig } from "../icons";
+interface LoaderProps {
+  className?: string;
+}
 
-export const Icon: FC<{
-    name: IconName;
-    width?: number;
-    height?: number;
-}> = ({ name, width = null, height }) => {
-    const IconComponent = svgIconsConfig[name].component;
-
-    return <IconComponent width={`${width ? width : 24}px`} height={`${height ? height : 24}px`} />;
+const Loader: React.FC<LoaderProps> = ({ className }) => {
+  return <Icon name={"loader"} className={`loader ${className}`} />;
 };
+
+export default Loader;

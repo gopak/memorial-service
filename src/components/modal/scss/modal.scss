@@ -1,0 +1,13 @@
+.modal {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &__close {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+}

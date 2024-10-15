@@ -1,59 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ConsultantGrid.scss";
+import { getImagePathFromStorage } from "../../firebase/Firebase.service";
+import { Consultant } from "../../services/consultant/Consultant.model";
+import { Link } from "react-router-dom";
 
-import { useAppDispatch } from "../../../../store/store";
-import { getConsultantsList } from "../../../../services/consultant/Consultant.service";
-import { Customer } from "../../../../services/customer/Customer.model";
-import { getImagePathFromStorage } from "../../../../firebase/Firebase.service";
+interface ConsultantGridProps {
+  consultantsList: Consultant[];
+  loading?: boolean;
+}
 
-interface HomeConsultantProps {}
+const blankList = Array(4).fill(0);
 
-const ConsultantGrid: React.FC<HomeConsultantProps> = (props) => {
-  const dispatch = useAppDispatch();
-  const [consultantsList, setConsultantsList] = useState<Customer[]>([]);
-
-  useEffect(() => {
-    dispatchGetConsultanstList();
-  }, []);
-
-  const dispatchGetConsultanstList = async (): Promise<void> => {
-    try {
-      const response = await dispatch(getConsultantsList());
-      setConsultantsList(response);
-    } catch (error) {}
-  };
-
+const ConsultantGrid: React.FC<ConsultantGridProps> = ({
+  consultantsList,
+  loading,
+}) => {
   return (
-    <div className="home-consultant-container">
-      <div className="wrapper">
-        <h2 className="mb-3">Каталог консультантів</h2>
-        <p className="text-md mb-5">
-          Консультанти - це спеціально навчені люди, що допомагають користувачам
-          орієнтуватися в сервісі та надають власні послуги.
-        </p>
-        <div className="home-consultant">
+    <div className="consultant-grid">
+      {loading ? (
+        <>
+          {blankList.map((item, index) => (
+            <div
+              key={index}
+              className="consultant-grid__item consultant-grid__item--loading skeleton-pseudo-transparent"
+            ></div>
+          ))}
+        </>
+      ) : (
+        <>
           {consultantsList.map((item) => (
-            <div key={item.id} className="home-consultant__item">
-              <div className="home-consultant__photo">
-                <div className="home-consultant__photo__img">
+            <div key={item.id} className="consultant-grid__item">
+              <div className="consultant-grid__photo">
+                <div className="consultant-grid__photo__img">
                   <img src={getImagePathFromStorage(item?.photoPath)} alt="" />
                 </div>
               </div>
-              <div className="home-consultant__name">
+              <div className="consultant-grid__name">
                 {item.firstName} {item.lastName}
               </div>
               {item.cityName && item.regionName ? (
-                <div className="home-consultant__address">
+                <div className="consultant-grid__address">
                   {item.cityName}, {item.regionName}
                 </div>
               ) : null}
-              <a href="/" className="link-dashed">
+              <Link
+                to={`/consultants-catalog/${item.id}`}
+                className="link-dashed"
+              >
                 Детальніше
-              </a>
+              </Link>
             </div>
           ))}
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

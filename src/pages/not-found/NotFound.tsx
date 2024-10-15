@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 
-interface HomeProps {}
+interface NotFoundProps {}
 
-const Home: React.FC<HomeProps> = props => {
-
+const NotFound: React.FC<NotFoundProps> = (props) => {
   return (
-      <h1>Home</h1>
+    <div className="wrapper">
+      <h1>Not Found</h1>
+    </div>
   );
-}
+};
 
-export default Home;
+export default NotFound;

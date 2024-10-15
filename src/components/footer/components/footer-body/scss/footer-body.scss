@@ -1,24 +1,9 @@
-.person-card {
+.footer-body {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px 0 10px;
 
-  &__photo {
-    flex: 0 0 80px;
-    margin-right: 20px;
-    border-radius: 100%;
-    overflow: hidden;
-  }
-
-  &__info {
-    flex: auto;
-  }
-
-  &__name {
-    margin-bottom: 5px;
-    font-family: Bold;
-  }
-
-  &__phone {
-
+  &__item {
+    width: 33.3333%;
   }
 }

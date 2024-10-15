@@ -1,4 +1,4 @@
-.text-sm { font-size: 12px; }
+.text-md { font-size: 20px; }
 
 // Text alignment
 .text-nowrap { white-space: nowrap; }
@@ -22,20 +22,8 @@
 
 // Font weight and italics
 .font-weight-normal  { font-weight: normal; }
+.font-weight-md    { font-family: Medium; }
 .font-weight-bold    { font-weight: 600; }
 .font-italic         { font-style: italic; }
 
-// Text color
-.text-danger { color: #a94442; }
-
-small, .small {
-  font-size: 80%;
-  font-weight: 400;
-}
-
-hr {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
+.cursor-pointer { cursor: pointer; }

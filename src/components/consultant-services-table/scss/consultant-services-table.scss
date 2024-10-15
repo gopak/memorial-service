@@ -1,3 +1,15 @@
-.consultant-services {
+.consultant-services-table {
+  &__title {
+    font-family: Bold;
+  }
 
+  &__desc {
+    font-size: 14px;
+    color: #595959;
+  }
+
+  &__cost {
+    font-family: DemiBold;
+    text-wrap: nowrap;
+  }
 }

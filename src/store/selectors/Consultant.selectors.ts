@@ -1,5 +1,5 @@
 import { RootState } from "../reducers";
-import { CustomerState } from "../reducers/Customer.reducer";
+import { ConsultantState } from "../reducers/Consultant.reducer";
 
-export const selectCustomerState = (state: RootState): CustomerState => state.customer;
-
+export const selectConsultantState = (state: RootState): ConsultantState =>
+  state.consultant;

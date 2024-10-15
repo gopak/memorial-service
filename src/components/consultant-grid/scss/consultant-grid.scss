@@ -1,4 +1,4 @@
-.home-consultant {
+.consultant-grid {
   display: flex;
   flex-flow: row wrap;
   margin: 0 -15px;
@@ -6,10 +6,14 @@
   &__item {
     width: calc(25% - 30px);
     margin: 0 15px 30px;
-    padding: 50px 30px 30px;
+    padding: 30px;
     background-color: #FAFBFF;
     border: 1px solid #E6E6E6;
     border-radius: 5px;
+
+    &--loading {
+      height: 350px;
+    }
   }
 
   &__photo {

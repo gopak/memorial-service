@@ -1,41 +1,17 @@
-import { Injectable } from '@angular/core';
+import { uploadBytes } from "firebase/storage";
+import { StorageReference, UploadResult } from "@firebase/storage";
 
-import { Observable } from 'rxjs';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { UploadTaskSnapshot } from '@angular/fire/compat/storage/interfaces';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class FileUploadService {
-  constructor() {}
-
-  /**
-   * @description pushFileToStorage
-   * @param storage
-   * @param path
-   * @param file
-   * @return {Observable<UploadTaskSnapshot | undefined>}
-   */
-  pushFileToStorage(
-    storage: AngularFireStorage,
-    path: string,
-    file: File
-  ): Observable<UploadTaskSnapshot | undefined> {
-    const uploadTask = storage.upload(path, file);
-    return uploadTask.snapshotChanges();
+export const pushFileToStorage = async (
+  storageRef: StorageReference,
+  file: File,
+): Promise<UploadResult | undefined> => {
+  console.log("fileUpload pushFileToStorage attempt");
+  try {
+    const snapshot = await uploadBytes(storageRef, file);
+    console.log("fileUpload pushFileToStorage success", snapshot);
+    return snapshot;
+  } catch (error: any) {
+    console.log("fileUpload pushFileToStorage error", error);
+    throw new Error(error);
   }
-
-  /**
-   * @description deleteFileStorage
-   * @param storage
-   * @param path
-   * @return {Observable<any>}
-   */
-  deleteFileStorage(
-    storage: AngularFireStorage,
-    path: string
-  ): Observable<any> {
-    return storage.ref(path).delete();
-  }
-}
+};

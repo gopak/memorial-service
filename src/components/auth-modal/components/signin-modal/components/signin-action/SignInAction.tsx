@@ -1,7 +1,7 @@
 import React from "react";
 import "./SignInAction.scss";
 
-import { UserType } from "../../../../app.types";
+import { UserType } from "../../../../../../app.types";
 
 interface SignInActionProps {
   openSigninForm: (type: UserType) => void;

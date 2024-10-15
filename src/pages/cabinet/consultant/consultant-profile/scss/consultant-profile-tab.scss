@@ -1,0 +1,23 @@
+.consultant-profile-tab {
+  display: flex;
+  margin: 20px 0 0;
+  list-style: none;
+
+  &__item {
+    padding: 10px 40px;
+    border: 1px solid #CCD8FF;
+    border-radius: 40px;
+    color: #000;
+    white-space: nowrap;
+    cursor: pointer;
+
+    & + & {
+      margin-left: 15px;
+    }
+
+    &.active {
+      background-color: #CCD8FF;
+      cursor: default;
+    }
+  }
+}

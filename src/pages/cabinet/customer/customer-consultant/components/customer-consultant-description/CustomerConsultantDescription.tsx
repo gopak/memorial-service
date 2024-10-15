@@ -1,7 +1,7 @@
 import React from "react";
 import "./CustomerConsultantDescription.scss";
 import { useSelector } from "react-redux";
-import { selectConsultantState } from "../../../../../store/selectors/Consultant.selectors";
+import { selectConsultantState } from "../../../../../../store/selectors/Consultant.selectors";
 
 interface CustomerConsultantDescriptionProps {}
 

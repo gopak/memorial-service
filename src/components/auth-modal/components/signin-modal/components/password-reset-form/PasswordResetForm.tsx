@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./PasswordResetForm.scss";
+
 import { useForm } from "react-hook-form";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { alertMessage } from "../../../alert-message/AlertMessage";
+import { alertMessage } from "../../../../../alert-message/AlertMessage";
 import {
   auth,
   paresFirebaseErrors,
-} from "../../../../firebase/Firebase.service";
-import Input from "../../../../modules/forms/controls/Input";
-import { PATTERN } from "../../../../modules/forms/validators/Validator";
-import Loader from "../../../loader/Loader";
+} from "../../../../../../firebase/Firebase.service";
+import Input from "../../../../../../modules/forms/controls/Input";
+import { PATTERN } from "../../../../../../modules/forms/validators/Validator";
+import Loader from "../../../../../loader/Loader";
 
 interface PasswordResetFormProps {
   onSuccess: () => void;

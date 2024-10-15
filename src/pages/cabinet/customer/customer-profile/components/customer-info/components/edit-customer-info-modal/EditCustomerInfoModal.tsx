@@ -7,31 +7,30 @@ import React, {
 } from "react";
 import "./EditCustomerInfoModal.scss";
 
-import Modal, { ModalRef } from "../../../../../../../components/modal/Modal";
 import { useForm } from "react-hook-form";
-import { useAppDispatch } from "../../../../../../../store/store";
-import { AreasConstant } from "../../../../../../../constants/Areas.constant";
 import {
   Customer,
   CustomerPayload,
-} from "../../../../../../../services/customer/Customer.model";
+} from "../../../../../../../../services/customer/Customer.model";
+import { useAppDispatch } from "../../../../../../../../store/store";
+import Modal, {
+  ModalRef,
+} from "../../../../../../../../components/modal/Modal";
+import Select, {
+  SelectOption,
+} from "../../../../../../../../modules/forms/controls/Select";
+import { AreasConstant } from "../../../../../../../../constants/Areas.constant";
+import { updateCustomerProfile } from "../../../../../../../../services/customer/Customer.service";
+import { alertMessage } from "../../../../../../../../components/alert-message/AlertMessage";
+import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../../app.types";
+import Input from "../../../../../../../../modules/forms/controls/Input";
 import {
   MAX_LENGTH,
   MIN_LENGTH,
   PATTERN,
-} from "../../../../../../../modules/forms/validators/Validator";
-import Input from "../../../../../../../modules/forms/controls/Input";
-import Select, {
-  SelectOption,
-} from "../../../../../../../modules/forms/controls/Select";
-import InputDate from "../../../../../../../modules/forms/controls/InputDate";
-import {
-  getCustomerProfile,
-  updateCustomerProfile,
-} from "../../../../../../../services/customer/Customer.service";
-import Loader from "../../../../../../../components/loader/Loader";
-import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../app.types";
-import { alertMessage } from "../../../../../../../components/alert-message/AlertMessage";
+} from "../../../../../../../../modules/forms/validators/Validator";
+import InputDate from "../../../../../../../../modules/forms/controls/InputDate";
+import Loader from "../../../../../../../../components/loader/Loader";
 
 interface EditCustomerInfoModalProps {}
 
@@ -139,7 +138,6 @@ const EditCustomerInfoModal = forwardRef<
         updateCustomerProfile(profile.id, getUpdatePayload(form)),
       );
       console.log("handlerUpdateCustomerProfile success", result);
-      dispatch(getCustomerProfile(profile?.id));
       alertMessage({
         type: "success",
         message: "Дякуємо, дані успішно застосовано",

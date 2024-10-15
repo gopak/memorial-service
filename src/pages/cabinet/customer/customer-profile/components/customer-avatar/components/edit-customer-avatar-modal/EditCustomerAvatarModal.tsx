@@ -6,27 +6,24 @@ import React, {
   useState,
 } from "react";
 import "./EditCustomerAvatarModal.scss";
-
-import Modal, { ModalRef } from "../../../../../../../components/modal/Modal";
-import { useAppDispatch } from "../../../../../../../store/store";
-import { Customer } from "../../../../../../../services/customer/Customer.model";
-
-import {
-  getCustomerProfile,
-  updateCustomerProfile,
-} from "../../../../../../../services/customer/Customer.service";
-import Loader from "../../../../../../../components/loader/Loader";
-import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../app.types";
-import AvatarView from "../../../../../../../components/avatar-view/AvatarView";
-import Icon from "../../../../../../../components/icons/Icons";
-import { alertMessage } from "../../../../../../../components/alert-message/AlertMessage";
+import { Customer } from "../../../../../../../../services/customer/Customer.model";
+import { useAppDispatch } from "../../../../../../../../store/store";
+import Modal, {
+  ModalRef,
+} from "../../../../../../../../components/modal/Modal";
 import {
   getImagePathFromStorage,
   storage,
-} from "../../../../../../../firebase/Firebase.service";
-import { pushFileToStorage } from "../../../../../../../services/file-upload/FileUpload.service";
+} from "../../../../../../../../firebase/Firebase.service";
+import { alertMessage } from "../../../../../../../../components/alert-message/AlertMessage";
+import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../../app.types";
 import { ref } from "firebase/storage";
-import { convertImageToWebp } from "../../../../../../../utils/Image.util";
+import { pushFileToStorage } from "../../../../../../../../services/file-upload/FileUpload.service";
+import { updateCustomerProfile } from "../../../../../../../../services/customer/Customer.service";
+import { convertImageToWebp } from "../../../../../../../../utils/Image.util";
+import Icon from "../../../../../../../../components/icons/Icons";
+import AvatarView from "../../../../../../../../components/avatar-view/AvatarView";
+import Loader from "../../../../../../../../components/loader/Loader";
 
 interface EditCustomerAvatarModalProps {}
 
@@ -100,7 +97,6 @@ const EditCustomerAvatarModal = forwardRef<
         }),
       );
       console.log("handlerSavePhoto success");
-      dispatch(getCustomerProfile(profile?.id));
       alertMessage({
         type: "success",
         message: "Дякуємо, фото успішно застосовано",

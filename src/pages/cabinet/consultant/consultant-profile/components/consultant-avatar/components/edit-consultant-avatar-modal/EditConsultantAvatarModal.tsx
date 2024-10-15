@@ -7,26 +7,27 @@ import React, {
 } from "react";
 import "./EditConsultantAvatarModal.scss";
 
-import Modal, { ModalRef } from "../../../../../../../components/modal/Modal";
-import { useAppDispatch } from "../../../../../../../store/store";
-
-import Loader from "../../../../../../../components/loader/Loader";
-import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../app.types";
-import AvatarView from "../../../../../../../components/avatar-view/AvatarView";
-import Icon from "../../../../../../../components/icons/Icons";
-import { alertMessage } from "../../../../../../../components/alert-message/AlertMessage";
+import { ref } from "firebase/storage";
+import { Consultant } from "../../../../../../../../services/consultant/Consultant.model";
+import { useAppDispatch } from "../../../../../../../../store/store";
+import Modal, {
+  ModalRef,
+} from "../../../../../../../../components/modal/Modal";
 import {
   getImagePathFromStorage,
   storage,
-} from "../../../../../../../firebase/Firebase.service";
-import { pushFileToStorage } from "../../../../../../../services/file-upload/FileUpload.service";
-import { ref } from "firebase/storage";
-import { convertImageToWebp } from "../../../../../../../utils/Image.util";
-import { Consultant } from "../../../../../../../services/consultant/Consultant.model";
+} from "../../../../../../../../firebase/Firebase.service";
+import { alertMessage } from "../../../../../../../../components/alert-message/AlertMessage";
+import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../../app.types";
+import { convertImageToWebp } from "../../../../../../../../utils/Image.util";
+import { pushFileToStorage } from "../../../../../../../../services/file-upload/FileUpload.service";
 import {
   getConsultantProfile,
   updateConsultantProfile,
-} from "../../../../../../../services/consultant/Consultant.service";
+} from "../../../../../../../../services/consultant/Consultant.service";
+import Icon from "../../../../../../../../components/icons/Icons";
+import AvatarView from "../../../../../../../../components/avatar-view/AvatarView";
+import Loader from "../../../../../../../../components/loader/Loader";
 
 interface EditConsultantAvatarModalProps {}
 

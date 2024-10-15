@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 import "./ConsultantAvatar.scss";
 
 import { useSelector } from "react-redux";
-import AvatarView from "../../../../../components/avatar-view/AvatarView";
 import EditConsultantAvatarModal, {
   EditConsultantAvatarModalRef,
 } from "./components/edit-consultant-avatar-modal/EditConsultantAvatarModal";
-import { selectConsultantState } from "../../../../../store/selectors/Consultant.selectors";
-import { getImagePathFromStorage } from "../../../../../firebase/Firebase.service";
+import { selectConsultantState } from "../../../../../../store/selectors/Consultant.selectors";
+import AvatarView from "../../../../../../components/avatar-view/AvatarView";
+import { getImagePathFromStorage } from "../../../../../../firebase/Firebase.service";
 
 interface ConsultantAvatarProps {}
 

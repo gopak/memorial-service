@@ -1,18 +1,18 @@
 import React from "react";
-import "./LabelValue.scss";
+import "./InfoView.scss";
 
-interface LabelValueProps {
+interface InfoViewProps {
   label: string;
   value: any;
 }
 
-const LabelValue: React.FC<LabelValueProps> = ({ label, value }) => {
+const InfoView: React.FC<InfoViewProps> = ({ label, value }) => {
   return (
-    <div className={"label-value"}>
-      <p className={"label-value__label"}>{label}</p>
-      <span className={"label-value__value"}>{value}</span>
+    <div className={"info-view"}>
+      <p className={"info-view__label"}>{label}</p>
+      <span className={"info-view__value"}>{value}</span>
     </div>
   );
 };
 
-export default LabelValue;
+export default InfoView;

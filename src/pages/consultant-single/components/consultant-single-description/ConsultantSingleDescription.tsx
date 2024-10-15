@@ -1,45 +1,21 @@
-import React, { useEffect } from "react";
-import "./ConsultantSingle.scss";
-import { useAppDispatch } from "../../store/store";
-import { getConsultantProfile } from "../../services/consultant/Consultant.service";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectConsultantState } from "../../store/selectors/Consultant.selectors";
-import WhyChoose from "../../components/why-choose/WhyChoose";
-import { CONSULTANT_SINGLE_WHY_CHOOSE } from "./components/consultant-single-why-choose/ConsultantSingleWhyChoose.constant";
-import ConsultantServicesTable from "../../components/consultant-services-table/ConsultantServicesTable";
-import ConsultantSingleService from "./components/consultant-single-services/ConsultantSingleService";
-import ConsultantSingleWhyChoose from "./components/consultant-single-why-choose/ConsultantSingleWhyChoose";
-import ConsultantSingleProfile from "./components/consultant-single-profile/ConsultantSingleProfile";
+import React from "react";
+import "./ConsultantSingleDescription.scss";
 
-interface ConsultantSingleProps {}
+import { Consultant } from "../../../../services/consultant/Consultant.model";
 
-const ConsultantSingle: React.FC<ConsultantSingleProps> = (props) => {
-  const dispatch = useAppDispatch();
-  const { consultantId } = useParams();
-  const consultant = useSelector(selectConsultantState);
-  const profile = consultant.profile;
+interface ConsultantSingleDescriptionProps {
+  consultant: Consultant;
+}
 
-  useEffect(() => {
-    if (consultantId) {
-      dispatch(getConsultantProfile(consultantId));
-    }
-  }, []);
-
+const ConsultantSingleDescription: React.FC<
+  ConsultantSingleDescriptionProps
+> = ({ consultant }) => {
   return (
-    <div className="consultant-single">
-      <div className="wrapper">
-        <ConsultantSingleProfile />
-        <div className={"box mb-4"}>
-          <h4>Про консультанта</h4>
-          <div className={"mt-3"}>{profile?.description}</div>
-        </div>
-
-        <ConsultantSingleWhyChoose />
-        <ConsultantSingleService />
-      </div>
+    <div id="ConsultantSingleDescription" className={"box mb-4"}>
+      <h4>Про консультанта</h4>
+      <div className={"mt-3"}>{consultant?.description}</div>
     </div>
   );
 };
 
-export default ConsultantSingle;
+export default ConsultantSingleDescription;

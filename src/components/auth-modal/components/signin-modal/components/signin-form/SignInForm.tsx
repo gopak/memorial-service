@@ -2,19 +2,19 @@ import React from "react";
 import "./SignInForm.scss";
 
 import { useForm } from "react-hook-form";
-import { loginUser } from "../../../../services/auth/Auth.service";
-import { useAppDispatch } from "../../../../store/store";
-import Loader from "../../../loader/Loader";
+import { useAppDispatch } from "../../../../../../store/store";
+import { UserType } from "../../../../../../app.types";
 import { useSelector } from "react-redux";
-import { UserType } from "../../../../app.types";
-import { selectAuthState } from "../../../../store/selectors/Auth.selectors";
-import Input from "../../../../modules/forms/controls/Input";
+import { selectAuthState } from "../../../../../../store/selectors/Auth.selectors";
+import { loginUser } from "../../../../../../services/auth/Auth.service";
+import Input from "../../../../../../modules/forms/controls/Input";
 import {
   MAX_LENGTH,
   MIN_LENGTH,
   PATTERN,
-} from "../../../../modules/forms/validators/Validator";
-import InputCheckbox from "../../../../modules/forms/controls/InputCheckbox";
+} from "../../../../../../modules/forms/validators/Validator";
+import InputCheckbox from "../../../../../../modules/forms/controls/InputCheckbox";
+import Loader from "../../../../../loader/Loader";
 
 interface SignInFormProps {
   userType: UserType;

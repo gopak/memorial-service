@@ -1,34 +1,42 @@
-import React from "react";
-import "./HomeStatistics.scss";
+import React, { useEffect, useState } from "react";
+import "./HomeConsultant.scss";
 
-interface HomeStatisticsProps {}
+import { useAppDispatch } from "../../../../store/store";
+import { getConsultantsList } from "../../../../services/consultant/Consultant.service";
+import ConsultantGrid from "../../../../components/consultant-grid/ConsultantGrid";
+import { Consultant } from "../../../../services/consultant/Consultant.model";
 
-const HomeStatistics: React.FC<HomeStatisticsProps> = (props) => {
+interface HomeConsultantProps {}
+
+const HomeConsultant: React.FC<HomeConsultantProps> = (props) => {
+  const dispatch = useAppDispatch();
+  const [consultantsList, setConsultantsList] = useState<Consultant[]>([]);
+
+  useEffect(() => {
+    dispatchGetConsultanstList();
+  }, []);
+
+  const dispatchGetConsultanstList = async (): Promise<void> => {
+    try {
+      const response = await dispatch(getConsultantsList());
+      setConsultantsList(response);
+    } catch (error) {}
+  };
+
   return (
-    <div className={"home-statistics-container"}>
+    <div className="home-consultant-container">
       <div className="wrapper">
-        <h2>Український реєстр поховань у цифрах</h2>
-        <div className={"home-statistics"}>
-          <div className={"home-statistics__item"}>
-            <div className={"home-statistics__count"}>1 036 364</div>
-            Користувачів щодня додають могили до реєстру
-          </div>
-          <div className={"home-statistics__item"}>
-            <div className={"home-statistics__count"}>2 035</div>
-            Консультантів уже успішно працюють на сервісі
-          </div>
-          <div className={"home-statistics__item"}>
-            <div className={"home-statistics__count"}>6 056</div>
-            Кладовищ охоплює Український реєстр поховань
-          </div>
-          <div className={"home-statistics__item"}>
-            <div className={"home-statistics__count"}>26 236 000</div>
-            Могил уже додано до всеукраїнського реєстру
-          </div>
+        <h2 className="mb-3">Каталог консультантів</h2>
+        <p className="text-md mb-5">
+          Консультанти - це спеціально навчені люди, що допомагають користувачам
+          орієнтуватися в сервісі та надають власні послуги.
+        </p>
+        <div className="home-consultant">
+          <ConsultantGrid consultantsList={consultantsList} />
         </div>
       </div>
     </div>
   );
 };
 
-export default HomeStatistics;
+export default HomeConsultant;

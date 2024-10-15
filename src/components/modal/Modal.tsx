@@ -1,101 +1,62 @@
-import React, { useState } from 'react';
-import "./Login.scss";
-import ReactModal from 'react-modal';
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  RefObject,
+  useImperativeHandle,
+  useState,
+} from "react";
+import "./Modal.scss";
+import ReactModal from "react-modal";
+import Icon from "../icons/Icons";
 
-
-interface LoginProps {}
-const customStyles = {
-    content: {
-        // top: '50%',
-        // left: '50%',
-        // right: 'auto',
-        // bottom: 'auto',
-        // marginRight: '-50%',
-        // transform: 'translate(-50%, -50%)',
-    },
-};
-const Login: React.FC<LoginProps> = props => {
-    const [showModal, setShowModal] = useState(false)
-
-    const handleClose = () => {
-        setShowModal(false)
-    }
-  return (
-      <div className="">
-          <button className={"btn btn-link mr-2"}>Вхід</button>
-          <button className={"btn"} onClick={() => setShowModal(true)}>Реєстрація</button>
-          <ReactModal
-              isOpen={showModal}
-              shouldCloseOnOverlayClick={true}
-              contentLabel="Example Modal"
-              onRequestClose={handleClose}
-              style={customStyles}
-          >
-{/*              <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>*/}
-              <button onClick={() => setShowModal(false)}>close</button>
-              <div>I am a modal</div>
-              <form>
-                  <input />
-                  <button>tab navigation</button>
-                  <button>stays</button>
-                  <button>inside</button>
-                  <button>the modal</button>
-              </form>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-              <p style={{margin: 50}}>asdasdadasdasdas</p>
-          </ReactModal>
-          </div>
-  );
+interface ModalProps {
+  children: React.ReactNode;
+  ref: RefObject<ModalRef>;
+  headerTitle: string;
+  contentClassName?: string;
+  onClose?: () => void;
 }
 
-export default Login;
+export interface ModalRef {
+  close: () => void;
+  open: () => void;
+}
+
+const Modal = forwardRef<ModalRef, PropsWithChildren<ModalProps>>(
+  (props, ref) => {
+    const [showModal, setShowModal] = useState(false);
+
+    useImperativeHandle(ref, () => ({
+      close,
+      open,
+    }));
+
+    const open = (): void => {
+      setShowModal(true);
+    };
+
+    const close = (): void => {
+      setShowModal(false);
+      props?.onClose && props?.onClose();
+    };
+
+    return (
+      <ReactModal
+        isOpen={showModal}
+        shouldCloseOnOverlayClick={true}
+        onRequestClose={close}
+        className={props.contentClassName ? props.contentClassName : ""}
+      >
+        <div className={"modal__header"}>
+          <h3>{props.headerTitle}</h3>
+          <span className={"modal__header__close"} onClick={close}>
+            <Icon name={"close"} />
+          </span>
+        </div>
+        {props.children}
+      </ReactModal>
+    );
+  },
+);
+
+export default Modal;

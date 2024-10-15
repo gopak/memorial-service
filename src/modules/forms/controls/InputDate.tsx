@@ -1,83 +1,60 @@
-import React, {
-    forwardRef,
-    useImperativeHandle,
-} from "react";
-import {  useController } from "react-hook-form";
-import { ERROR_MESSAGES, PATTERN } from "../validators/Validator";
+import React, { forwardRef, useState } from "react";
+import "react-calendar/dist/Calendar.css";
+import "react-date-picker/dist/DatePicker.css";
+
+import { useController } from "react-hook-form";
+import { FORM_ERROR_MESSAGES } from "../validators/Validator";
 import { Control } from "react-hook-form/dist/types/form";
 import { RegisterOptions } from "react-hook-form/dist/types/validator";
+import { Value } from "../../../app.types";
+import DatePicker from "react-date-picker";
+import Icon from "../../../components/icons/Icons";
 
 interface InputProps {
-    control: Control<any, any>;
-    rules: Omit<RegisterOptions, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
-    name: string;
-    placeholder?: string;
+  control: Control<any, any>;
+  rules: Omit<
+    RegisterOptions,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
+  name: string;
+  initValueCalendar?: Date | null;
 }
 
 export interface InputRef {}
 
-const Input = forwardRef<InputRef, InputProps>( (props, ref) => {
-    const {
-        control,
-        rules,
-        name,
-        placeholder
-    } = props;
-    const { field, fieldState } = useController({ control, rules, name } );
+const MAX_DATE = new Date();
 
-    useImperativeHandle(ref, () => ({}));
+const InputDate = forwardRef<InputRef, InputProps>((props, ref) => {
+  const { control, rules, name, initValueCalendar } = props;
+  const { field, fieldState } = useController({ control, rules, name });
+  const [value, setValue] = useState<Value>(initValueCalendar ?? null);
 
-    const getMinLengthErrorMessages = (): string => {
-        return ERROR_MESSAGES.MIN_LENGTH.replace('{length}', String(rules?.minLength));
+  const onChangeCalendar = (value: Value): void => {
+    if (!value) {
+      return;
     }
 
-    const getPatternErrorMessages = (): string => {
-        let message = ERROR_MESSAGES.DEFAULT;
+    setValue(value);
+    field.onChange(new Date(String(value)).getTime());
+  };
 
-        switch (rules.pattern) {
-            case PATTERN.PHONE:
-                message = ERROR_MESSAGES.PATTERN_PHONE;
-                break;
-            case PATTERN.EMAIL:
-                message = ERROR_MESSAGES.PATTERN_EMAIL;
-                break;
-        }
-
-        return message;
-    }
-
-    const getErrorMessages = (): string => {
-        let message = ERROR_MESSAGES.DEFAULT;
-
-        switch (fieldState?.error?.type) {
-            case "required":
-                message = ERROR_MESSAGES.REQUIRED;
-                break;
-            case "minLength":
-                message = getMinLengthErrorMessages();
-                break;
-            case "pattern":
-                message = getPatternErrorMessages();
-                break;
-            }
-
-        return message;
-    }
-
-    return (
-        <>
-            <input {...field}
-                   placeholder={placeholder}
-                   className={"form-control"}
-                   maxLength={Number(rules.maxLength) || undefined}
-            />
-            {fieldState?.error && (
-                <div className={"form-error"}>
-                    {getErrorMessages()}
-                </div>
-            )}
-        </>
-    );
+  return (
+    <>
+      <DatePicker
+        onChange={onChangeCalendar}
+        value={value}
+        locale={"uk-UA"}
+        calendarIcon={<Icon name={"calendar"} />}
+        clearIcon={<></>}
+        className={"form-input-date"}
+        maxDate={MAX_DATE}
+        format={"dd.MM.yy"}
+      />
+      {fieldState?.error && (
+        <div className={"form-error"}>{FORM_ERROR_MESSAGES.REQUIRED}</div>
+      )}
+    </>
+  );
 });
 
-export default Input;
+export default InputDate;

@@ -3,10 +3,10 @@ import "./ConsultantShortProfile.scss";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import InfoView from "../../../../../components/info-view/InfoView";
-import PersonCard from "../../../../../components/person-card/PersonCard";
-import { selectConsultantState } from "../../../../../store/selectors/Consultant.selectors";
-import { getImagePathFromStorage } from "../../../../../firebase/Firebase.service";
+import { selectConsultantState } from "../../../../../../store/selectors/Consultant.selectors";
+import PersonCard from "../../../../../../components/person-card/PersonCard";
+import { getImagePathFromStorage } from "../../../../../../firebase/Firebase.service";
+import InfoView from "../../../../../../components/info-view/InfoView";
 
 interface ConsultantShortProfileProps {}
 

@@ -1,40 +1,34 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
+import "./Footer.scss";
+import FooterBody from "./components/footer-body/FooterBody";
 
 interface Props {}
 
-export async function loader() {
-  await new Promise((r) => setTimeout(r, 500));
-  return "I came from the About.tsx loader function!";
-}
-
-const Header: React.FC<Props> = props => {
-
+const Footer: React.FC<Props> = (props) => {
   return (
-      <header>
-        <Link to="/about">About</Link>
-      </header>
+    <footer className={"footer"}>
+      <div className={"footer-noticed-error"}>
+        <div className={"wrapper"}>
+          <div className={"footer-noticed-error__body"}>
+            <div className={"footer-noticed-error__action"}>
+              <p className={"h2 mb-3"}>
+                Помітили помилку або маєте ідеї для покращення сервісу?
+              </p>
+              <p className={"mb-3"}>Залиште заявку і ми з вами зв’яжемося!</p>
+              <button className={"btn"}>Надіслати повідомлення</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <FooterBody />
+      <div className="wrapper">
+        <div className={"footer-copyright"}>
+          Український реєстр поховань, Memorial Service &copy;{" "}
+          {new Date().getFullYear()}
+        </div>
+      </div>
+    </footer>
   );
-}
+};
 
-export default Header;
-
-// import { useLoaderData } from "react-router-dom";
-//
-// export async function loader() {
-//   await new Promise((r) => setTimeout(r, 500));
-//   return "I came from the About.tsx loader function!";
-// }
-//
-// export function Component() {
-//   let data = useLoaderData() as string;
-//
-//   return (
-//       <div>
-//         <h2>About</h2>
-//         <p>{data}</p>
-//       </div>
-//   );
-// }
-//
-// Component.displayName = "AboutPage";
+export default Footer;

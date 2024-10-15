@@ -2,14 +2,12 @@ import React, { useRef } from "react";
 import "./CustomerAvatar.scss";
 
 import { useSelector } from "react-redux";
-import { selectCustomerState } from "../../../../../store/selectors/Customer.selectors";
-
-import AvatarView from "../../../../../components/avatar-view/AvatarView";
-
+import { selectCustomerState } from "../../../../../../store/selectors/Customer.selectors";
 import EditCustomerAvatarModal, {
   EditCustomerAvatarModalRef,
 } from "./components/edit-customer-avatar-modal/EditCustomerAvatarModal";
-import { getImagePathFromStorage } from "../../../../../firebase/Firebase.service";
+import AvatarView from "../../../../../../components/avatar-view/AvatarView";
+import { getImagePathFromStorage } from "../../../../../../firebase/Firebase.service";
 
 interface CustomerAvatarProps {}
 

@@ -5,23 +5,23 @@ import { useSelector } from "react-redux";
 import EditConsultantInfoModal, {
   EditConsultantInfoModalRef,
 } from "./components/edit-consultant-info-modal/EditConsultantInfoModal";
-import { convertTimestampToString } from "../../../../../utils/Helpers.util";
-import InfoView from "../../../../../components/info-view/InfoView";
-import { selectConsultantState } from "../../../../../store/selectors/Consultant.selectors";
+import { selectConsultantState } from "../../../../../../store/selectors/Consultant.selectors";
+import InfoView from "../../../../../../components/info-view/InfoView";
+import { convertTimestampToString } from "../../../../../../utils/Helpers.util";
 
 interface ConsultantInfoProps {}
 
 const ConsultantInfo: React.FC<ConsultantInfoProps> = (props) => {
   const consultant = useSelector(selectConsultantState);
   const profile = consultant.profile;
-  const editConsultantInfoModalRef = useRef<EditConsultantInfoModalRef>(null);
+  const editModalRef = useRef<EditConsultantInfoModalRef>(null);
 
   const openModal = (): void => {
     if (!profile) {
       return;
     }
 
-    editConsultantInfoModalRef?.current?.openModal(profile);
+    editModalRef?.current?.openModal(profile);
   };
 
   return (
@@ -36,9 +36,7 @@ const ConsultantInfo: React.FC<ConsultantInfoProps> = (props) => {
           >
             Редагувати
           </button>
-          {profile ? (
-            <EditConsultantInfoModal ref={editConsultantInfoModalRef} />
-          ) : null}
+          {profile ? <EditConsultantInfoModal ref={editModalRef} /> : null}
         </div>
       </div>
 

@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import "./EditConsultantInfoModal.scss";
+import "./EditConsultantDescriptionModal.scss";
 
 import { useForm } from "react-hook-form";
 import {
@@ -34,28 +34,21 @@ import {
 } from "../../../../../../../../modules/forms/validators/Validator";
 import InputDate from "../../../../../../../../modules/forms/controls/InputDate";
 import Loader from "../../../../../../../../components/loader/Loader";
+import Textarea from "../../../../../../../../modules/forms/controls/Textarea";
 
-interface EditConsultantInfoModalProps {}
+interface EditConsultantDescriptionModalProps {}
 
-export interface EditConsultantInfoModalRef {
+export interface EditConsultantDescriptionModalRef {
   openModal: (profile: Consultant) => void;
 }
 
 interface Form {
-  lastName: string;
-  firstName: string;
-  surName: string;
-  dateBirth: number;
-  phone: string;
-  email: string;
-  regionId: string;
-  cityId: string;
-  address: string;
+  description: string | undefined;
 }
 
-const EditConsultantInfoModal = forwardRef<
-  EditConsultantInfoModalRef,
-  PropsWithChildren<EditConsultantInfoModalProps>
+const EditConsultantDescriptionModal = forwardRef<
+  EditConsultantDescriptionModalRef,
+  PropsWithChildren<EditConsultantDescriptionModalProps>
 >((props, ref) => {
   const dispatch = useAppDispatch();
   const modalRef = useRef<ModalRef>(null);
@@ -67,15 +60,7 @@ const EditConsultantInfoModal = forwardRef<
   const [errorDetail, setErrorDetail] = useState<string>("");
   const { control, handleSubmit, getValues, reset } = useForm<Form>({
     defaultValues: {
-      lastName: "",
-      firstName: "",
-      surName: "",
-      dateBirth: 0,
-      phone: "",
-      email: "",
-      regionId: "",
-      cityId: "",
-      address: "",
+      description: "",
     },
   });
 
@@ -83,35 +68,11 @@ const EditConsultantInfoModal = forwardRef<
     openModal,
   }));
 
-  const getRegionsFormSelect = (): SelectOption[] => {
-    return AreasConstant.map((i) => ({
-      id: i.id,
-      label: i.name,
-    }));
-  };
-
   const openModal = (profile: Consultant | null): void => {
-    setRegions(getRegionsFormSelect());
     if (profile) {
       setProfile(profile);
       let defaultValues = {} as Form;
-      defaultValues.lastName = profile.lastName;
-      defaultValues.firstName = profile.firstName;
-      defaultValues.surName = profile.surName;
-      defaultValues.phone = profile.phone;
-      defaultValues.email = profile.email;
-      defaultValues.address = profile.address ?? "";
-
-      if (profile.regionId) {
-        defaultValues.regionId = profile.regionId;
-        setCities(getCitiesFormSelect(profile.regionId));
-        defaultValues.cityId = profile.cityId ?? "";
-      }
-
-      if (profile?.dateBirth) {
-        defaultValues.dateBirth = profile.dateBirth;
-        setInitValueCalendar(new Date(profile.dateBirth));
-      }
+      defaultValues.description = profile.description;
       reset({ ...defaultValues });
     }
     modalRef?.current?.open();
@@ -138,7 +99,9 @@ const EditConsultantInfoModal = forwardRef<
     setLoading(true);
     try {
       const result = await dispatch(
-        updateConsultantProfile(profile.id, getUpdatePayload(form)),
+        updateConsultantProfile(profile.id, {
+          description: form.description,
+        }),
       );
       console.log("handlerUpdateConsultantProfile success", result);
       dispatch(getConsultantProfile(profile?.id));
@@ -155,179 +118,37 @@ const EditConsultantInfoModal = forwardRef<
     }
   };
 
-  const getRegionName = (regionId: string): string => {
-    return AreasConstant?.find((i) => i.id === regionId)?.name;
-  };
-
-  const getCityName = (cityId: string): string => {
-    return cities?.find((i) => i.id === cityId)?.label;
-  };
-
-  const getUpdatePayload = (form: Form): ConsultantPayload => {
-    return {
-      firstName: form.firstName,
-      lastName: form.lastName,
-      surName: form.surName,
-      dateBirth: form.dateBirth,
-      phone: form.phone,
-      email: form.email,
-      regionId: form.regionId,
-      regionName: getRegionName(form.regionId),
-      cityId: form.cityId,
-      cityName: getCityName(form.cityId),
-      address: form.address,
-    };
-  };
-
-  const onChangeRegion = (): void => {
-    const regionId = getValues("regionId");
-    setCities(getCitiesFormSelect(regionId));
-  };
-
-  const getCitiesFormSelect = (regionId: string): SelectOption[] => {
-    const cityAreas = AreasConstant.find((i) => i.id === regionId)?.areas ?? [];
-    return cityAreas.map((i) => ({
-      id: i.id,
-      label: i.name,
-    }));
-  };
-
   return (
     <Modal
       ref={modalRef}
-      contentClassName={"edit-consultant-info-modal"}
-      headerTitle={"Редагувати особисті дані"}
+      contentClassName={"edit-consultant-description-modal"}
+      headerTitle={"Редагувати опис"}
       onClose={onClose}
     >
+      <div className="msg msg-info mt-3">
+        <p>
+          <span className="font-weight-md">Зверніть увагу!</span> Цей блок буде
+          відображатися у вашому особистому профілі на головній сторінці сайту.
+        </p>
+        Опис не має перевищувати 5000 знаків.
+      </div>
       <form onSubmit={handleSubmit(handlerFormSubmit, handlerError)}>
-        <div className={"edit-consultant-info-form"}>
-          <h4>Основна інформація</h4>
-          <div className="container-50">
-            <div className={"container-50__item"}>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Ім’я</label>
-                <Input
-                  control={control}
-                  type={"text"}
-                  name="firstName"
-                  rules={{
-                    required: true,
-                    minLength: MIN_LENGTH.NAME,
-                    maxLength: MAX_LENGTH.NAME,
-                  }}
-                  placeholder={"Наприклад, Сергій"}
-                />
-              </div>
-              <div className={"form-group"}>
-                <label className={"form-label"}>По-батькові</label>
-                <Input
-                  control={control}
-                  type={"text"}
-                  name="surName"
-                  rules={{
-                    required: true,
-                    minLength: MIN_LENGTH.NAME,
-                    maxLength: MAX_LENGTH.NAME,
-                  }}
-                  placeholder={"Наприклад, Сергійович"}
-                />
-              </div>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Номер телефону</label>
-                <Input
-                  control={control}
-                  type={"text"}
-                  name="phone"
-                  rules={{
-                    required: true,
-                    pattern: PATTERN.PHONE,
-                    minLength: MIN_LENGTH.PHONE,
-                    maxLength: MAX_LENGTH.PHONE,
-                  }}
-                  placeholder={"+38  (  0 _  _  )  _  _  _  _  _  _  _"}
-                />
-              </div>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Область</label>
-                <Select
-                  control={control}
-                  rules={{
-                    required: true,
-                  }}
-                  name="regionId"
-                  className={"text-capitalize"}
-                  option={regions}
-                  placeholder={"Вибіріть область"}
-                  onValueChange={onChangeRegion}
-                />
-              </div>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Адрес</label>
-                <Input
-                  control={control}
-                  name="address"
-                  rules={{
-                    required: true,
-                    maxLength: MAX_LENGTH.ADDRESS,
-                  }}
-                  placeholder={"Введіть адрес"}
-                />
-              </div>
-            </div>
-            <div className={"container-50__item"}>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Прізвище</label>
-                <Input
-                  control={control}
-                  type={"text"}
-                  name="lastName"
-                  rules={{
-                    required: true,
-                    minLength: MIN_LENGTH.NAME,
-                    maxLength: MAX_LENGTH.NAME,
-                  }}
-                  placeholder={"Наприклад, Сергійченко"}
-                />
-              </div>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Дата народження</label>
-                <InputDate
-                  control={control}
-                  name="dateBirth"
-                  rules={{
-                    required: true,
-                  }}
-                  initValueCalendar={initValueCalendar}
-                />
-              </div>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Email</label>
-                <Input
-                  control={control}
-                  type={"text"}
-                  name="email"
-                  rules={{
-                    required: true,
-                    pattern: PATTERN.EMAIL,
-                  }}
-                  placeholder={"Введіть email"}
-                  readOnly={true}
-                />
-              </div>
-              <div className={"form-group"}>
-                <label className={"form-label"}>Населений пункт</label>
-                <Select
-                  control={control}
-                  rules={{
-                    required: true,
-                  }}
-                  name="cityId"
-                  className={"text-capitalize"}
-                  option={cities}
-                  placeholder={"Вибіріть населений пункт"}
-                />
-              </div>
-            </div>
+        <div className={"edit-consultant-description-form"}>
+          <div className={"form-group"}>
+            <label className={"form-label"}>Опишіть себе тут</label>
+            <Textarea
+              control={control}
+              name="description"
+              rules={{
+                required: true,
+                minLength: MIN_LENGTH.DESCRIPTION,
+                maxLength: MAX_LENGTH.DESCRIPTION,
+              }}
+              placeholder={
+                "Можна додати інформацію про досвід та коротко розказати про себе"
+              }
+              rows={10}
+            />
           </div>
         </div>
         {errorDetail ? (
@@ -344,4 +165,4 @@ const EditConsultantInfoModal = forwardRef<
   );
 });
 
-export default EditConsultantInfoModal;
+export default EditConsultantDescriptionModal;

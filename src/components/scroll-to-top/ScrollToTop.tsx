@@ -1,34 +1,16 @@
-import React from "react";
-import "./SocialList.scss";
-import Icon from "../icons/Icons";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-interface SocialListProps {}
+interface ScrollToTopProps {}
 
-const SocialList: React.FC<SocialListProps> = (props) => {
-  return (
-    <ul className={"social-list"}>
-      <li className={"social-list__item"}>
-        <a href="/">
-          <Icon name={"instagram"} width={32} height={32} />
-        </a>
-      </li>
-      <li className={"social-list__item"}>
-        <a href="/">
-          <Icon name={"facebook"} width={32} height={32} />
-        </a>
-      </li>
-      <li className={"social-list__item"}>
-        <a href="/">
-          <Icon name={"telegram"} width={32} height={32} />
-        </a>
-      </li>
-      <li className={"social-list__item"}>
-        <a href="/">
-          <Icon name={"viber"} width={32} height={32} />
-        </a>
-      </li>
-    </ul>
-  );
+const ScrollToTop: React.FC<ScrollToTopProps> = (props) => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
 };
 
-export default SocialList;
+export default ScrollToTop;

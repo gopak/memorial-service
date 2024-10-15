@@ -1,4 +1,4 @@
-export interface Customer {
+export interface Consultant {
   id: string;
   firstName: string;
   lastName: string;
@@ -6,16 +6,24 @@ export interface Customer {
   dateBirth: number;
   phone: string;
   email: string;
-  consultantId?: string;
   regionId?: string;
   regionName?: string;
   cityId?: string;
   cityName?: string;
   address?: string;
   photoPath?: string;
+  description?: string;
+  services: ConsultantService[];
+  clientIds: string[];
 }
 
-export interface CustomerPayload {
+export interface ConsultantService {
+  title: string;
+  cost: number;
+  description: string;
+}
+
+export interface ConsultantPayload {
   id?: string;
   firstName?: string;
   lastName?: string;
@@ -23,11 +31,11 @@ export interface CustomerPayload {
   dateBirth?: number;
   phone?: string;
   email?: string;
-  consultantId?: string;
   regionId?: string;
   regionName?: string;
   cityId?: string;
   cityName?: string;
   address?: string;
   photoPath?: string;
+  description?: string;
 }

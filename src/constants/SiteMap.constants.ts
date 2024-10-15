@@ -1,6 +1,6 @@
 export const SITE_MAP = [
   {
-    path: "/",
+    path: "/consultants-catalog",
     title: "Каталог консультантів",
   },
   {

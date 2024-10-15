@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 import "./CustomerPassword.scss";
 
 import { useSelector } from "react-redux";
-import { selectCustomerState } from "../../../../../store/selectors/Customer.selectors";
 
-import InfoView from "../../../../../components/info-view/InfoView";
 import EditCustomerPasswordModal, {
   EditCustomerPasswordModalRef,
 } from "./components/edit-customer-password-modal/EditCustomerPasswordModal";
+import { selectCustomerState } from "../../../../../../store/selectors/Customer.selectors";
+import InfoView from "../../../../../../components/info-view/InfoView";
 
 interface CustomerPasswordProps {}
 

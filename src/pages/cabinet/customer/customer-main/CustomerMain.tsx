@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectCustomerState } from "../../../store/selectors/Customer.selectors";
 import CustomerShortProfile from "./components/customer-short-profile/CustomerShortProfile";
 import CustomerConsultantShortProfile from "./components/customer-consultant-short-profile/CustomerConsultantShortProfile";
+import { selectCustomerState } from "../../../../store/selectors/Customer.selectors";
 
 interface UserMainProps {}
 

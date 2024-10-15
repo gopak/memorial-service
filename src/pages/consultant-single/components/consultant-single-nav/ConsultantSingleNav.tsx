@@ -1,37 +1,76 @@
-import React, { useEffect } from "react";
-import "./ConsultantSingle.scss";
-import { useAppDispatch } from "../../store/store";
-import { getConsultantProfile } from "../../services/consultant/Consultant.service";
-import { useParams } from "react-router-dom";
-import ConsultantSingleService from "./components/consultant-single-services/ConsultantSingleService";
-import ConsultantSingleWhyChoose from "./components/consultant-single-why-choose/ConsultantSingleWhyChoose";
-import ConsultantSingleProfile from "./components/consultant-single-profile/ConsultantSingleProfile";
-import ConsultantSingleDescription from "./components/consultant-single-description/ConsultantSingleDescription";
+import React from "react";
+import "./ConsultantSingleNav.scss";
+import { Link } from "react-scroll";
+import ConsultantSingleDescription from "../consultant-single-description/ConsultantSingleDescription";
+import ConsultantSingleWhyChoose from "../consultant-single-why-choose/ConsultantSingleWhyChoose";
+import ConsultantSingleService from "../consultant-single-services/ConsultantSingleService";
+import { useSelector } from "react-redux";
+import { selectConsultantState } from "../../../../store/selectors/Consultant.selectors";
 
-interface ConsultantSingleProps {}
+interface ConsultantSingleNavProps {}
 
-const ConsultantSingle: React.FC<ConsultantSingleProps> = (props) => {
-  const dispatch = useAppDispatch();
-  const { consultantId } = useParams();
-
-  useEffect(() => {
-    if (consultantId) {
-      dispatch(getConsultantProfile(consultantId));
-    }
-  }, []);
-
+const ConsultantSingleNav: React.FC<ConsultantSingleNavProps> = (props) => {
+  const consultant = useSelector(selectConsultantState);
+  const profile = consultant.profile;
+  // {profile?.description ? <ConsultantSingleDescription /> : null}
+  // <ConsultantSingleWhyChoose />
+  // {profile?.services?.length ? <ConsultantSingleService /> : null}
   return (
-    <div className="consultant-single-container">
-      <div className="wrapper">
-        <div className="consultant-single">
-          <ConsultantSingleProfile />
-          <ConsultantSingleDescription />
-          <ConsultantSingleWhyChoose />
-          <ConsultantSingleService />
-        </div>
-      </div>
+    <div className="box consultant-single-nav__wrap">
+      <h3>Навігація</h3>
+      <ul className="consultant-single-nav">
+        <li className="consultant-single-nav__list">
+          <Link
+            className="consultant-single-nav__item"
+            smooth
+            spy
+            offset={-10}
+            to="ConsultantSingleProfile"
+          >
+            Основні дані
+          </Link>
+        </li>
+        {profile?.description ? (
+          <li className="consultant-single-nav__list">
+            <Link
+              className="consultant-single-nav__item"
+              smooth
+              spy
+              offset={-10}
+              to="ConsultantSingleDescription"
+            >
+              Про консультанта
+            </Link>
+          </li>
+        ) : null}
+
+        <li className="consultant-single-nav__list">
+          <Link
+            className="consultant-single-nav__item"
+            smooth
+            spy
+            offset={-10}
+            to="ConsultantSingleWhyChoose"
+          >
+            Переваги
+          </Link>
+        </li>
+        {profile?.services?.length ? (
+          <li className="consultant-single-nav__list">
+            <Link
+              className="consultant-single-nav__item"
+              smooth
+              spy
+              offset={-10}
+              to="ConsultantSingleServices"
+            >
+              Послуги
+            </Link>
+          </li>
+        ) : null}
+      </ul>
     </div>
   );
 };
 
-export default ConsultantSingle;
+export default ConsultantSingleNav;

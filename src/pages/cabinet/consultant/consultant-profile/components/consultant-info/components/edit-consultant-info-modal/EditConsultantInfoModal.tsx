@@ -7,31 +7,33 @@ import React, {
 } from "react";
 import "./EditConsultantInfoModal.scss";
 
-import Modal, { ModalRef } from "../../../../../../../components/modal/Modal";
 import { useForm } from "react-hook-form";
-import { useAppDispatch } from "../../../../../../../store/store";
-import { AreasConstant } from "../../../../../../../constants/Areas.constant";
+import {
+  Consultant,
+  ConsultantPayload,
+} from "../../../../../../../../services/consultant/Consultant.model";
+import { useAppDispatch } from "../../../../../../../../store/store";
+import Modal, {
+  ModalRef,
+} from "../../../../../../../../components/modal/Modal";
+import Select, {
+  SelectOption,
+} from "../../../../../../../../modules/forms/controls/Select";
+import { AreasConstant } from "../../../../../../../../constants/Areas.constant";
+import {
+  getConsultantProfile,
+  updateConsultantProfile,
+} from "../../../../../../../../services/consultant/Consultant.service";
+import { alertMessage } from "../../../../../../../../components/alert-message/AlertMessage";
+import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../../app.types";
+import Input from "../../../../../../../../modules/forms/controls/Input";
 import {
   MAX_LENGTH,
   MIN_LENGTH,
   PATTERN,
-} from "../../../../../../../modules/forms/validators/Validator";
-import Input from "../../../../../../../modules/forms/controls/Input";
-import Select, {
-  SelectOption,
-} from "../../../../../../../modules/forms/controls/Select";
-import InputDate from "../../../../../../../modules/forms/controls/InputDate";
-import Loader from "../../../../../../../components/loader/Loader";
-import { DEFAULT_MESSAGES_ERROR } from "../../../../../../../app.types";
-import { alertMessage } from "../../../../../../../components/alert-message/AlertMessage";
-import {
-  Consultant,
-  ConsultantPayload,
-} from "../../../../../../../services/consultant/Consultant.model";
-import {
-  getConsultantProfile,
-  updateConsultantProfile,
-} from "../../../../../../../services/consultant/Consultant.service";
+} from "../../../../../../../../modules/forms/validators/Validator";
+import InputDate from "../../../../../../../../modules/forms/controls/InputDate";
+import Loader from "../../../../../../../../components/loader/Loader";
 
 interface EditConsultantInfoModalProps {}
 

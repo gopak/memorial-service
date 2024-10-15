@@ -4,8 +4,8 @@ import "./CustomerProfile.scss";
 import CustomerInfo from "./components/customer-info/CustomerInfo";
 import CustomerAvatar from "./components/customer-avatar/CustomerAvatar";
 import { useSelector } from "react-redux";
-import { selectCustomerState } from "../../../store/selectors/Customer.selectors";
 import CustomerPassword from "./components/customer-password/CustomerPassword";
+import { selectCustomerState } from "../../../../store/selectors/Customer.selectors";
 interface CustomerProfileProps {}
 
 const CustomerProfile: React.FC<CustomerProfileProps> = (props) => {

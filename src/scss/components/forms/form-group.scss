@@ -1,7 +1,7 @@
 .form-group {
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 
-  &-lg {
-    margin-bottom: 20px;
+  &.has-error {
+    margin-bottom: 5px;
   }
 }

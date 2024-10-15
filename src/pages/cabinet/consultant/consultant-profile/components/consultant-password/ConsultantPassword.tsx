@@ -3,11 +3,11 @@ import "./ConsultantPassword.scss";
 
 import { useSelector } from "react-redux";
 
-import InfoView from "../../../../../components/info-view/InfoView";
 import EditConsultantPasswordModal, {
   EditConsultantPasswordModalRef,
 } from "./components/edit-consultant-password-modal/EditConsultantPasswordModal";
-import { selectConsultantState } from "../../../../../store/selectors/Consultant.selectors";
+import { selectConsultantState } from "../../../../../../store/selectors/Consultant.selectors";
+import InfoView from "../../../../../../components/info-view/InfoView";
 
 interface ConsultantPasswordProps {}
 

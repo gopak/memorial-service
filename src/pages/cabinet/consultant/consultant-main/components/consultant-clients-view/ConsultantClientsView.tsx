@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ConsultantCustomers.scss";
+import "./ConsultantClientsView.scss";
 
 import { useSelector } from "react-redux";
 import { selectConsultantState } from "../../../../../../store/selectors/Consultant.selectors";
@@ -8,9 +8,9 @@ import { useAppDispatch } from "../../../../../../store/store";
 import { Customer } from "../../../../../../services/customer/Customer.model";
 import ConsultantClientsTable from "../../../../../../components/consultant-clients-table/ConsultantClientsTable";
 
-interface ConsultantCustomersProps {}
+interface ConsultantClientsViewProps {}
 
-const ConsultantCustomers: React.FC<ConsultantCustomersProps> = (props) => {
+const ConsultantClientsView: React.FC<ConsultantClientsViewProps> = (props) => {
   const dispatch = useAppDispatch();
   const consultant = useSelector(selectConsultantState);
   const profile = consultant.profile;
@@ -39,4 +39,4 @@ const ConsultantCustomers: React.FC<ConsultantCustomersProps> = (props) => {
   );
 };
 
-export default ConsultantCustomers;
+export default ConsultantClientsView;

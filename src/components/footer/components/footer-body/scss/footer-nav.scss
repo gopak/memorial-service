@@ -1,11 +1,10 @@
-.public-nav {
+.footer-nav {
   list-style: none;
-  display: flex;
   margin: 0;
 
   &__list {
     & + & {
-      margin-left: 30px;
+      margin-top: 20px;
     }
   }
 
