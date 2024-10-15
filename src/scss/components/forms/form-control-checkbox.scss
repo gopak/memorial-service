@@ -1,0 +1,12 @@
+.checkbox {
+  display: flex;
+
+  label {
+    cursor: pointer;
+  }
+
+  &__input {
+    margin-right: 5px;
+    cursor: pointer;
+  }
+}

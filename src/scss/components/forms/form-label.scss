@@ -1,0 +1,16 @@
+.label-control {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  &-required {
+    &:after {
+      content: ' *';
+      vertical-align: top;
+      color: #a94442;
+      line-height: 1;
+    }
+  }
+}

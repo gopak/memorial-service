@@ -1,0 +1,36 @@
+// Typography
+$font-family-base: 'InterRegular', sans-serif !default;
+$font-size-base: 14px;
+
+// Z-INDEX
+$z-fade: 1000 !default;
+
+// Path
+$domain-path:     "" !default;
+//$domain-path:     "https://boodmo.com" !default;
+$assets-path:     "#{$domain-path}/assets" !default;
+$font-path:       "#{$assets-path}/fonts" !default;
+$images-path-img: "#{$assets-path}/images" !default;
+
+// Icons
+@import "variables/font-icomoon";
+
+//Responsive
+//                          1     2    3    4    5    6    7    8    9
+$res-collection:          (1114, 991, 814, 770, 642, 482, 377, 365, 322);
+$orientation-collection:  (all, portrait, landscape);
+$hdpi-collection:         (1, 2);
+$hdtv-collection:         ('720p', '1080', '2K', '4K');
+$mq-mobile:               768px;
+$mq-tablet:               1024px;
+
+// Grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 992px
+) !default;
+
+$grid-columns:                12 !default;
+$grid-gutter-width:           30px !default;

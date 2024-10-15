@@ -1,0 +1,23 @@
+@mixin button($color) {
+  display: block;
+  width: 100%;
+  background-color: $color;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 600;
+  font-family: $font-family-base;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .3s;
+
+  &:hover {
+    text-decoration: none;
+    background-color: lighten($color, 7%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

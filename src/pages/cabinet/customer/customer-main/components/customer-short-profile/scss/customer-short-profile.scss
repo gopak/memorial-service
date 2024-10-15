@@ -1,0 +1,25 @@
+.customer-short-profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__body {
+    padding-top: 15px;
+  }
+
+  &__action {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 20px;
+
+    &__button {
+      width: calc(50% - 6px);
+    }
+  }
+
+  .person-card {
+    margin-bottom: 20px;
+  }
+}

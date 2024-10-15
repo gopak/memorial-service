@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Custom variables
+
+@import "abstract";
+
+// Core
+
+@import 'core/font/font-inter';
+@import 'core/reboot';
+@import 'core/img';
+@import 'core/heading';
+@import 'core/type';
+@import 'core/display';
+@import 'core/spacing';
+@import 'core/grid';
+@import 'core/flex';
+@import 'core/link';
+@import 'core/helpers';
+
+@import 'vendor/freshwidget-button';
+@import 'vendor/grecaptcha-badge';
+@import 'vendor/credential_picker_container';
+@import 'vendor/swiper/swiper-lazy-preloader';
+
+// Custom styles
+
+@import 'components/buttons';
+@import 'components/resize';
+@import 'components/viewbox';
+@import 'components/section-seo';
+@import 'components/data-text-seo';
+@import 'components/fade-body';
+@import 'components/forms';
+@import 'components/slider-navigation';
+@import 'components/slider-navigation-button';
+@import 'components/message';
+@import "components/skeleton";
+@import "components/partners-logo";
+//@import 'swiper/swiper-bundle.min.css';
+//@import 'swiper/swiper';
+//import 'swiper/scss/navigation';
+//import 'swiper/scss/pagination';
+
+
+// Smart App Banner
+
+@import "~smartbanner.js/dist/smartbanner.css";
+
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import "vendor/overlay-prebuilt";
+

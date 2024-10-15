@@ -1,0 +1,57 @@
+@mixin mq($args...) {
+  $media-type: 'all';
+  $media-type-key: 'media-type';
+  $args: keywords($args);
+  $expr: '';
+
+  @if map-has-key($args, $media-type-key) {
+    $media-type: map-get($args, $media-type-key);
+    $args: map-remove($args, $media-type-key);
+  }
+
+  @each $key, $value in $args {
+    @if $value {
+      $expr: "#{$expr} and (#{$key}: #{$value})";
+    }
+  }
+
+  @media #{$media-type} #{$expr} {
+    @content;
+  }
+}
+
+@mixin screen($min, $max, $orientation: false) {
+  @include mq($min-width: $min, $max-width: $max, $orientation: $orientation) {
+    @content;
+  }
+}
+
+@mixin max-screen($max) {
+  @include mq($max-width: $max) {
+    @content;
+  }
+}
+
+@mixin min-screen($min) {
+  @include mq($min-width: $min) {
+    @content;
+  }
+}
+
+@mixin landscape($max) {
+  @include mq($max-width: $max, $orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait() {
+  @include mq($orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin max-screen-orientation($max, $maxOrientation, $orientation) {
+  @media all and (max-width: $max), all and (max-width: $maxOrientation) and (orientation: $orientation) {
+    @content;
+  }
+}

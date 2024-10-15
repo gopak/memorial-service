@@ -1,0 +1,38 @@
+.loader {
+  width: 20px;
+  height: 20px;
+  transform: rotate(-90deg);
+  stroke-linecap: round;
+  stroke-width: 10;
+  fill: none;
+
+  &__circle {
+    stroke: #59d8fd;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 312;
+    transform-origin: center;
+    animation: loader 2s linear infinite;
+
+    &.white {
+      stroke: #fff;
+    }
+
+    &.blue-dark {
+      stroke: #12477a;
+    }
+  }
+}
+
+@keyframes loader {
+  0% {
+    stroke-dashoffset: 312;
+    transform: rotate(70deg);
+  }
+  60% {
+    stroke-dashoffset: -312;
+  }
+  100% {
+    stroke-dashoffset: -312;
+    transform: rotate(450deg);
+  }
+}

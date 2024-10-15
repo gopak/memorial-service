@@ -1,0 +1,15 @@
+.public-nav {
+  list-style: none;
+  display: flex;
+  margin: 0;
+
+  &__list {
+    & + & {
+      margin-left: 30px;
+    }
+  }
+
+  &__item {
+    color: $color-base;
+  }
+}

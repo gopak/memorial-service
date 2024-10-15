@@ -1,0 +1,28 @@
+.customer-consultant-profile {
+  display: flex;
+
+  &__photo {
+    flex: 0 0 150px;
+    width: 150px;
+    margin-right: 40px;
+
+
+    img {
+      width: 150px;
+      border-radius: 100%;
+      overflow: hidden;
+    }
+
+    &__action {
+      margin-top: 25px;
+    }
+  }
+
+  &__body {
+    flex: auto;
+  }
+
+  &__name {
+    margin-bottom: 15px;
+  }
+}

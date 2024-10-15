@@ -1,0 +1,47 @@
+.home-consultant {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -15px;
+
+  &__item {
+    width: calc(25% - 30px);
+    margin: 0 15px 30px;
+    padding: 50px 30px 30px;
+    background-color: #FAFBFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 5px;
+  }
+
+  &__photo {
+    max-width: 180px;
+    margin: 0 auto 20px;
+
+    &__img {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      border-radius: 100%;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+      }
+    }
+  }
+
+  &__name {
+    font-family: DemiBold;
+    font-size: 20px;
+  }
+
+  &__address {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #595959;
+  }
+}
